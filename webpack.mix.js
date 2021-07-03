@@ -11,11 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js([
+mix.sourceMaps().js([
     'resources/js/app.js',
-    'resources/js/jquery.js'
+    'resources/js/jquery.js',
+    'node_modules/popper.js/dist/popper.js'
     ], 'public/js')
-    .vue()
+    // .vue()
     .sass('resources/sass/app.scss', 'public/css')
     .autoload({
         jquery: ['$', 'window.jQuery']

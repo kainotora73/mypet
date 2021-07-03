@@ -1,74 +1,53 @@
-@extends('layouts.app')
+<x-app-layout>
+        <div class="card mt-4 mx-auto" style="width:30rem;">
+            <div class="card-header">{{__('新規登録') }}</div>
+            <div class="card-body">
+               <x-auth-validation-errors class="mb-4 alert alert-danger text-center" :errors="$errors" />
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="row form-group">
+                        <x-label class="col-sm-4" for="name" :value="__('名前')" />
+                        <div class="col-sm-8">
+                            <x-input id="name" class="block mt-1 form-control" type="text" name="name" :value="old('name')" required autofocus />
+                        </div>
+                    </div>
 
-@section('content')
-<div class="top">
-    <h1>{{ __('Welcome My pet') }}</h1>
-</div>
-<div class="form-group">
-    <div class="form-text">{{ __('新規登録') }}</div>
+                    <div class="mt-4 row">
+                        <x-label class="col-sm-4" for="email" :value="__('メールアドレス')" />
+                        <div class="col-sm-8">
+                            <x-input id="email" class="block mt-1 form-control" type="email" name="email" :value="old('email')" required />
+                        </div>
+                    </div>
 
-    <div class="form-text">
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+                    <div class="mt-4 row">
+                        <x-label class="col-sm-4" for="password" :value="__('パスワード')" />
+                        <div class="col-sm-8">
+                            <x-input id="password" class="block mt-1 form-control"
+                                            type="password"
+                                            name="password"
+                                            required autocomplete="new-password" />
+                        </div>
+                    </div>
 
-            <div class="form-text">
-                <label for="name">{{ __('Name') }}</label>
+                    <div class="mt-4 row">
+                        <x-label class="col-sm-4" for="password_confirmation" :value="__('パスワード（確認用）')" />
+                        <div class="col-sm-8">
+                            <x-input id="password_confirmation" class="block mt-1 form-control"
+                                            type="password"
+                                            name="password_confirmation" required />
+                        </div>
+                    </div>
 
-                <div>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                    @error('name')
-                        <span role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                    <div class="flex items-center justify-end mt-4">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900 ml-1" href="{{ route('login') }}">
+                            {{ __('既に登録済の方') }}
+                        </a>
+                        <button class="ml-5 btn btn-outline-info">
+                            {{ __('新規登録') }}
+                        </button>
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <div class="form-text">
-                <label for="email">{{ __('E-Mail Address') }}</label>
-
-                <div>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                    @error('email')
-                        <span role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="form-text">
-                <label for="password">{{ __('Password') }}</label>
-
-                <div>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                    @error('password')
-                        <span role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="form-text">
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
-
-                <div>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div>
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('新規登録') }}
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-@endsection
+</x-app-layout>

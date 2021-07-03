@@ -31,8 +31,6 @@ header{
 
 
 .top{
-    background-image:url(/img/dogdisplay.png);
-    background-size:cover;
     text-align: center;
     opacity:0.7;
     padding:180px 0 100px 0;
@@ -155,6 +153,3 @@ li{
 .night{
     background-color: rgb(41, 41, 224);
 }
-ボ
-ボタン
-変える

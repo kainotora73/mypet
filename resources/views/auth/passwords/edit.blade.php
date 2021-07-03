@@ -1,14 +1,9 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Change Password</div>
+            <div class="card mt-4 mx-auto" style="width:30rem;">
+                <div class="card-header">{{__('パスワード変更')}}</div>
 
-                <div class="panel-body">
-                    {{-- フラッシュメッセージの表示 --}}
+                <div class="card-body">
                     @if (session('warning'))
                         <div class="alert alert-warning">
                             {{ session('warning') }}
@@ -25,7 +20,7 @@
 
                         <input type="hidden" name="id" value="{{ $user->id }}">
                         <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
-                            <label for="current_password" class="col-md-4 control-label">Current Password</label>
+                            <label for="current_password" class="col-md-4 control-label">{{ __('現在のパスワード') }}</label>
 
                             <div class="col-md-6">
                                 <input id="current_password" type="password" class="form-control" name="current_password" required>
@@ -39,7 +34,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
-                            <label for="new_password" class="col-md-4 control-label">New Password</label>
+                            <label for="new_password" class="col-md-4 control-label">{{ __('新しいパスワード') }}</label>
 
                             <div class="col-md-6">
                                 <input id="new_password" type="password" class="form-control" name="new_password" required>
@@ -53,7 +48,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('new_password_confirmation') ? ' has-error' : '' }}">
-                            <label for="new_password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="new_password-confirm" class="col-md-4 control-label">{{ __('確認用パスワード') }}</label>
                             <div class="col-md-6">
                                 <input id="new_password-confirm" type="password" class="form-control" name="new_password_confirmation" required>
 
@@ -66,16 +61,13 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Change Password
+                            <div class=" text-center">
+                                <button type="submit" class="btn btn-outline-info">
+                                    {{ __('変更') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-@endsection
+</x-app-layout>

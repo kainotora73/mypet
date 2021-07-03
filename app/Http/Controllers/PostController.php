@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Breakfast;
+use App\Models\Lunch;
+use App\Models\Dinner;
+use DB;
 
 
 class PostController extends Controller
@@ -45,5 +49,35 @@ class PostController extends Controller
 
         return redirect()
             ->route('home');
+    }
+    public function morning(Request $request) {
+        $id = $request->pet_id;
+        $morning = Breakfast::where('id',
+            (Breakfast::where('pet_id',$id)
+                ->max('id'))
+            )
+            ->delete();
+        return response()
+            ->json();
+    }
+    public function noon(Request $request) {
+        $id = $request->pet_id;
+        $noon = Lunch::where('id',
+            (Lunch::where('pet_id',$id)
+                ->max('id'))
+            )
+            ->delete();
+        return response()
+            ->json();
+    }
+    public function night(Request $request) {
+        $id = $request->pet_id;
+        $night = Dinner::where('id',
+            (Dinner::where('pet_id',$id)
+                ->max('id'))
+            )
+            ->delete();
+        return response()
+            ->json();
     }
 }

@@ -31,12 +31,15 @@ class HomeController extends Controller
         $auths = Auth::id();
         $pets = Pet::where('user_id',$auths)->get();
 
+        // home/tab/foreach
+        $i = 1;
+        $n = 1;
+
         return view('home')
-            ->with(['pets' => $pets]);
+            ->with(['pets' => $pets,'i' => $i,'n' => $n]);
     }
+
     public function breakfast(Request $request){
-
-
         $breakfast = new Breakfast();
         $breakfast->user_id = Auth::user()->id;
         $breakfast->pet_id = $request->pet_id;
@@ -44,13 +47,12 @@ class HomeController extends Controller
         $breakfast->time = date('H:i');
         $breakfast->save();
 
-        $mealtime= $breakfast->time;
-        $json = '朝ごはん '.$mealtime.' 完了';
+
+
         return response()
-            ->json($json);
+            ->json();
     }
     public function lunch(Request $request){
-
         $lunch = new Lunch();
         $lunch->user_id = Auth::user()->id;
         $lunch->pet_id = $request->pet_id;
@@ -58,13 +60,10 @@ class HomeController extends Controller
         $lunch->time = date('H:i');
         $lunch->save();
 
-        $mealtime= $lunch->time;
-        $json = '昼ごはん '.$mealtime.' 完了';
         return response()
-            ->json($json);
+            ->json();
     }
     public function dinner(Request $request){
-
         $dinner = new Dinner();
         $dinner->user_id = Auth::user()->id;
         $dinner->pet_id = $request->pet_id;
@@ -72,10 +71,8 @@ class HomeController extends Controller
         $dinner->time = date('H:i');
         $dinner->save();
 
-        $mealtime= $dinner->time;
-        $json = '夜ごはん '.$mealtime.' 完了';
         return response()
-            ->json($json);
+            ->json();
     }
 
     public function chart(Request $request){
@@ -93,7 +90,6 @@ class HomeController extends Controller
             ->where('dinners.pet_id',$id)
             ->get();
 
-
         $json = [['日付','朝ごはん','昼ごはん','夜ごはん']];
         foreach($breakfast as $key => $val){
             $json[++$key] = [(string)$val->date,
@@ -106,6 +102,74 @@ class HomeController extends Controller
         return response()
             ->json($json);
     }
+    public function morning(Request $request){
+        $id = $request->pet_id;
+        $morning = Breakfast::select(
+            DB::raw('breakfasts.date'),
+            DB::raw('breakfasts.time as breakfast'),
+        )
+            ->where('breakfasts.pet_id',$id)
+            ->get();
+
+        $json = [['日付','朝ごはん']];
+        foreach($morning as $key => $val){
+            $json[++$key] = [(string)$val->date,
+                array_map('intval',explode(':',$val->breakfast))
+            ];
+        };
+
+        return response()
+            ->json($json);
+    }
+    public function noon(Request $request){
+        $id = $request->pet_id;
+        $noon = Lunch::select(
+            DB::raw('lunches.date'),
+            DB::raw('lunches.time as lunch'),
+        )
+            ->where('lunches.pet_id',$id)
+            ->get();
+
+        $json = [['日付','昼ごはん']];
+        foreach($noon as $key => $val){
+            $json[++$key] = [(string)$val->date,
+                array_map('intval',explode(':',$val->lunch))
+            ];
+        };
+
+        return response()
+            ->json($json);
+    }
+    public function night(Request $request){
+        $id = $request->pet_id;
+        $night = Dinner::select(
+            DB::raw('dinners.date'),
+            DB::raw('dinners.time as dinner'),
+        )
+            ->where('dinners.pet_id',$id)
+            ->get();
+
+        $json = [['日付','夜ごはん']];
+        foreach($night as $key => $val){
+            $json[++$key] = [(string)$val->date,
+                array_map('intval',explode(':',$val->dinner))
+            ];
+        };
+
+        return response()
+            ->json($json);
+    }
+
+    public function withdrawal(){
+        $user = Auth::user();
+        Auth::logout();
+        $user->delete();
+
+        return redirect("/");
+    }
+
+
+
 
 }
 

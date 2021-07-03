@@ -5,6 +5,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,14 @@ Route::post('/store', [PostController::class,'store'])
 Route::delete('{pet}/destroy', [PostController::class,'destroy'])
     ->name('destroy')
     ->where('post','[0-9]+');
+Route::delete('withdrawal', [HomeController::class,'withdrawal'])
+    ->name('withdrawal');
+Route::delete('morning-back', [PostController::class,'morning'])
+    ->name('morning-back');
+Route::delete('noon-back', [PostController::class,'noon'])
+    ->name('noon-back');
+Route::delete('night-back', [PostController::class,'night'])
+    ->name('night-back');
 
 
 Auth::routes();
@@ -44,7 +54,25 @@ Route::post('dinner', [HomeController::class,'dinner'])
 
 Route::post('chart', [HomeController::class,'chart'])
     ->name('chart');
+Route::post('morning', [HomeController::class,'morning'])
+    ->name('morning');
+Route::post('noon', [HomeController::class,'noon'])
+    ->name('noon');
+Route::post('night', [HomeController::class,'night'])
+    ->name('night');
+Route::post('change', [HomeController::class,'change'])
+    ->name('change');
+
 
 Route::get('/password/change', [ChangePasswordController::class,'edit']);
 Route::patch('/password/change',[ChangePasswordController::class,'update'])
     ->name('password.change');
+
+
+
+
+
+
+
+
+

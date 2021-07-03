@@ -1,67 +1,50 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
-        <div class="top">
-            <h1>{{ __('Login') }}</h1>
-        </div>
+        <div class="card mt-4 mx-auto" style="width:30rem;">
+            <div class="card-header">{{__('ログイン')}}</div>
+            <div class="card-body">
+                <x-auth-session-status class="mb-4 alert alert-success text-center" :status="session('status')" />
+                <x-auth-validation-errors class="mb-4 alert alert-danger text-center" :errors="$errors" />
 
-        <div class="form-text form-group">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-
-                <div class="form-text">
-                    <label for="email">{{ __('E-Mail Address') }}</label>
-
-                    <div class="form-text">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                        @error('email')
-                            <span role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-text">
-                    <label for="password">{{ __('Password') }}</label>
-
-                    <div class="form-text">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                        @error('password')
-                            <span role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div>
-                        <div class="form-check">
-                            <input class="form-text" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
-                            </label>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="row form-group">
+                        <x-label class="col-sm-4" for="email" :value="__('メールアドレス')" />
+                        <div class="col-sm-8">
+                            <x-input id="email" class="block mt-1 form-control" type="email" name="email" :value="old('email')" required autofocus />
                         </div>
                     </div>
-                </div>
 
-                <div>
-                    <div class="form-text">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Login') }}
-                        </button>
+                    <div class="mt-4 row">
+                        <x-label class="col-sm-4" for="password" :value="__('パスワード')" />
+                        <div class="col-sm-8">
+                            <x-input id="password" class="block mt-1 form-control"
+                                        type="password"
+                                        name="password"
+                                        required autocomplete="current-password" />
+                        </div>
+                    </div>
 
+                    <div class="block mt-4 row">
+                        <label for="remember_me" class="inline-flex items-center pl-2">
+                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                            <span class="ml-2 text-sm text-gray-600">{{ __('ログイン保持') }}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                {{ __('パスワードを忘れた方') }}
                             </a>
                         @endif
+
+                        <button class="ml-3 btn btn-outline-info">
+                            {{ __('ログイン') }}
+                        </button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-@endsection
+
+</x-app-layout>
