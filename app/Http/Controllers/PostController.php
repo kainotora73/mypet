@@ -20,6 +20,7 @@ class PostController extends Controller
 
 
     public function puls() {
+        // typeselect imgtitle
         $types = ['dog','cat','rabbit','hedgehog','turtle','birds','reptiles'];
         return view('puls')
             ->with(['types' => $types]);
@@ -50,6 +51,7 @@ class PostController extends Controller
         return redirect()
             ->route('home');
     }
+    // リクエスト-削除'朝'
     public function morning(Request $request) {
         $id = $request->pet_id;
         $morning = Breakfast::where('id',
@@ -60,6 +62,7 @@ class PostController extends Controller
         return response()
             ->json();
     }
+    // リクエスト-削除'昼'
     public function noon(Request $request) {
         $id = $request->pet_id;
         $noon = Lunch::where('id',
@@ -70,6 +73,7 @@ class PostController extends Controller
         return response()
             ->json();
     }
+    // リクエスト-削除'夜'
     public function night(Request $request) {
         $id = $request->pet_id;
         $night = Dinner::where('id',

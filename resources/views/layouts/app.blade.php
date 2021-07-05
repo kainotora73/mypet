@@ -44,22 +44,22 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('home') }}">{{ __('ホーム') }}</a>
 
-                                    @if (!Auth::id() == 1)
-                                    <a class="dropdown-item" href="{{ url('/password/change') }}">{{ __('パスワード変更') }}</a>
+                                    @if (Auth::id() != 1)
+                                        <a class="dropdown-item" href="{{ url('/password/change') }}">{{ __('パスワード変更') }}</a>
                                     @endif
-                                    
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
-                                    @if (!Auth::id() == 1)
-                                    <form method="post" action="{{ route('withdrawal') }}" >
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="dropdown-item delete-btn" >{{ __('退会') }}</button>
-                                    </form>
+                                    @if (Auth::id() != 1)
+                                        <form method="post" action="{{ route('withdrawal') }}" >
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="dropdown-item delete-btn" >{{ __('退会') }}</button>
+                                        </form>
                                     @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

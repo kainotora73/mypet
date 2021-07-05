@@ -7,12 +7,12 @@
 
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
-                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                    <input type="hidden" name="token" value="{{ $token }}">
 
                     <div class="row form-group">
                         <x-label class="col-sm-4" for="email" :value="__('Email')" />
                         <div class="col-sm-8">
-                            <x-input id="email" class="block mt-1 form-control" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                            <x-input id="email" class="block mt-1 form-control" type="email" name="email" :value="old('email')" required autofocus />
                         </div>
                     </div>
 

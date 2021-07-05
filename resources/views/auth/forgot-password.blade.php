@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end mt-4">
+                    <div class="flex text-center justify-end mt-4">
                         <button class=" ml-5 btn btn-outline-info">
                             {{ __('メールを送信する') }}
                         </button>

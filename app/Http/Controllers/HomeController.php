@@ -38,7 +38,7 @@ class HomeController extends Controller
         return view('home')
             ->with(['pets' => $pets,'i' => $i,'n' => $n]);
     }
-
+    // 記録朝ごはん
     public function breakfast(Request $request){
         $breakfast = new Breakfast();
         $breakfast->user_id = Auth::user()->id;
@@ -47,11 +47,10 @@ class HomeController extends Controller
         $breakfast->time = date('H:i');
         $breakfast->save();
 
-
-
         return response()
             ->json();
     }
+    // 記録昼ごはん
     public function lunch(Request $request){
         $lunch = new Lunch();
         $lunch->user_id = Auth::user()->id;
@@ -63,6 +62,7 @@ class HomeController extends Controller
         return response()
             ->json();
     }
+    // 記録夜ご飯
     public function dinner(Request $request){
         $dinner = new Dinner();
         $dinner->user_id = Auth::user()->id;
@@ -102,6 +102,7 @@ class HomeController extends Controller
         return response()
             ->json($json);
     }
+    // チャート朝
     public function morning(Request $request){
         $id = $request->pet_id;
         $morning = Breakfast::select(
@@ -121,6 +122,7 @@ class HomeController extends Controller
         return response()
             ->json($json);
     }
+    // チャート昼
     public function noon(Request $request){
         $id = $request->pet_id;
         $noon = Lunch::select(
@@ -140,6 +142,7 @@ class HomeController extends Controller
         return response()
             ->json($json);
     }
+    // チャート夜
     public function night(Request $request){
         $id = $request->pet_id;
         $night = Dinner::select(
@@ -159,7 +162,7 @@ class HomeController extends Controller
         return response()
             ->json($json);
     }
-
+    // 退会処理
     public function withdrawal(){
         $user = Auth::user();
         Auth::logout();

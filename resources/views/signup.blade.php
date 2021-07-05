@@ -1,7 +1,7 @@
 <x-app-layout>
 <div class="container">
     <h1 class="display-4 text-center pt-5 pb-5">{{ __('Welcome My pet') }}</h1>
-    <p></p>
+    <p class="text-center text-primary lead pb-4">{{ __('ペットの食事時間記録・グラフで時間管理') }}</p>
         <div class="row ">
             @guest
                 <a class="d-inline-block col-4 btn btn-outline-info px-5" role="button" href="{{ route('login') }}">{{ __('ログイン') }}</a>

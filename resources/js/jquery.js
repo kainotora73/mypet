@@ -30,8 +30,16 @@ $(function (){
                             };
                             var chart = new google.visualization.LineChart(cvs_chart);
                             chart.draw(dataIn, options);
+                            function resizeHandler () {
+                                chart.draw(dataIn, options);
+                            }
+                            if (window.addEventListener) {
+                                window.addEventListener('resize', resizeHandler, false);
+                            }
+                            else if (window.attachEvent) {
+                                window.attachEvent('onresize', resizeHandler);
+                            }
                         };
-                            console.log(data);
                     })
                     .fail(function (data, xhr, err) {
                         console.log('エラー');
@@ -44,8 +52,9 @@ $(function (){
 
 
 
-
+// 朝チャート
 function morning_chart(pet_id){
+    var cvs_chart = document.getElementById(pet_id+'morning');
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -58,12 +67,13 @@ function morning_chart(pet_id){
             .done(function (data) {
                 var dtt = data;
                 if(dtt.length < 2){
+                    $(cvs_chart).fadeOut();
                     return false;
                 }
+                $(cvs_chart).fadeIn();
                 google.charts.load('current', {'packages':['corechart']});
                 google.setOnLoadCallback(drawChart);
                 function drawChart() {
-                    var cvs_chart = document.getElementById(pet_id+'morning');
                     var dataIn = google.visualization.arrayToDataTable(dtt);
                     var options = {
                         title: '朝 餌の時間',
@@ -72,8 +82,18 @@ function morning_chart(pet_id){
                     };
                     var chart = new google.visualization.LineChart(cvs_chart);
                     chart.draw(dataIn, options);
+                    function resizeHandler () {
+                        chart.draw(dataIn, options);
+                    }
+                    // チャートをレスポンシブ
+                    if (window.addEventListener) {
+                        window.addEventListener('resize', resizeHandler, false);
+                    }
+                    else if (window.attachEvent) {
+                        window.attachEvent('onresize', resizeHandler);
+                    }
                 };
-                    console.log(data);
+
             })
             .fail(function (data, xhr, err) {
                 console.log('エラー');
@@ -84,7 +104,9 @@ function morning_chart(pet_id){
 
 
 };
+// 昼チャート
 function noon_chart(pet_id){
+    var cvs_chart = document.getElementById(pet_id+'noon');
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -97,12 +119,13 @@ function noon_chart(pet_id){
             .done(function (data) {
                 var dtt = data;
                 if(dtt.length < 2){
+                    $(cvs_chart).fadeOut();
                     return false;
                 }
+                $(cvs_chart).fadeIn();
                 google.charts.load('current', {'packages':['corechart']});
                 google.setOnLoadCallback(drawChart);
                 function drawChart() {
-                    var cvs_chart = document.getElementById(pet_id+'noon');
                     var dataIn = google.visualization.arrayToDataTable(dtt);
                     var options = {
                         title: '昼 餌の時間',
@@ -111,8 +134,16 @@ function noon_chart(pet_id){
                     };
                     var chart = new google.visualization.LineChart(cvs_chart);
                     chart.draw(dataIn, options);
+                    function resizeHandler () {
+                        chart.draw(dataIn, options);
+                    }
+                    if (window.addEventListener) {
+                        window.addEventListener('resize', resizeHandler, false);
+                    }
+                    else if (window.attachEvent) {
+                        window.attachEvent('onresize', resizeHandler);
+                    }
                 };
-                    console.log(data);
             })
             .fail(function (data, xhr, err) {
                 console.log('エラー');
@@ -123,7 +154,9 @@ function noon_chart(pet_id){
 
 
 };
+// 夜チャート
 function night_chart(pet_id){
+    var cvs_chart = document.getElementById(pet_id+'night');
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -136,12 +169,13 @@ function night_chart(pet_id){
             .done(function (data) {
                 var dtt = data;
                 if(dtt.length < 2){
+                    $(cvs_chart).fadeOut();
                     return false;
                 }
+                $(cvs_chart).fadeIn();
                 google.charts.load('current', {'packages':['corechart']});
                 google.setOnLoadCallback(drawChart);
                 function drawChart() {
-                    var cvs_chart = document.getElementById(pet_id+'night');
                     var dataIn = google.visualization.arrayToDataTable(dtt);
                     var options = {
                         title: '夜 餌の時間',
@@ -150,8 +184,16 @@ function night_chart(pet_id){
                     };
                     var chart = new google.visualization.LineChart(cvs_chart);
                     chart.draw(dataIn, options);
+                    function resizeHandler () {
+                        chart.draw(dataIn, options);
+                    }
+                    if (window.addEventListener) {
+                        window.addEventListener('resize', resizeHandler, false);
+                    }
+                    else if (window.attachEvent) {
+                        window.attachEvent('onresize', resizeHandler);
+                    }
                 };
-                    console.log(data);
             })
             .fail(function (data, xhr, err) {
                 console.log('エラー');
@@ -163,7 +205,7 @@ function night_chart(pet_id){
 
 };
 
-
+// タブ変更時チャート更新
 $(function (){
     $('.pagetab').each(function(){
         $(this).on('click',function(){
@@ -177,7 +219,7 @@ $(function (){
 
 
 
-// 時間記録
+// 時間記録-ボタン切り替え-チャート更新（朝昼夜対応）
 $(function () {
     $('.record-btn').each(function(){
         $(this).on('click', function() {
@@ -240,7 +282,7 @@ $('.delete-btn').each(function(){
 
     });
 });
-
+// 記録取消-ボタン切り替え-チャート更新（朝昼夜対応）
 $(function (){
     $('.back-btn').each(function(){
         $(this).on('click',function(){

@@ -74,7 +74,7 @@
                         <button data-id="{{ $pet->id }}" data-name="breakfast" id="{{ $pet->id }}morning-record"  class="
                         record-btn morning btn btn-outline-danger btn-lg"><img src="/img/breakfast.png">{{ __(' 朝ごはん') }}</button>
                         @endif
-                        <button data-name="morning-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}morning-back" class="back-btn btn btn-outline-danger" disabled>{{ __('一つ戻す') }}</button>
+                        <button data-name="morning-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}morning-back" class="back-btn btn btn-outline-dark" disabled>{{ __('一つ戻す') }}</button>
                         <div id="{{ $pet->id }}morning"></div>
                     </div>
                     <div class ="d-inline-block col-4 text-center">
@@ -86,7 +86,7 @@
                         <button data-id="{{ $pet->id }}" data-name="lunch"  id="{{ $pet->id }}noon-record"  class="
                         record-btn noon btn btn-outline-warning btn-lg" ><img src="/img/lunch.png">{{ __(' 昼ごはん') }}</button>
                         @endif
-                        <button data-name="noon-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}noon-back" class="back-btn btn btn-outline-danger" disabled>{{ __('一つ戻す') }}</button>
+                        <button data-name="noon-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}noon-back" class="back-btn btn btn-outline-dark" disabled>{{ __('一つ戻す') }}</button>
                         <div id="{{ $pet->id }}noon"></div>
                     </div>
                     <div class="d-inline-block col-4 text-center">
@@ -98,7 +98,7 @@
                         <button data-id="{{ $pet->id }}" data-name="dinner" id="{{ $pet->id }}night-record"  class="
                         record-btn night btn btn-outline-primary btn-lg" ><img src="/img/dinner.png">{{ __(' 夜ごはん') }}</button>
                         @endif
-                        <button data-name="night-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}night-back" class="back-btn btn btn-outline-danger" disabled>{{ __('一つ戻す') }}</button>
+                        <button data-name="night-back" data-id="{{ $pet->id }}" id="{{ $pet->id }}night-back" class="back-btn btn btn-outline-dark" disabled>{{ __('一つ戻す') }}</button>
                         <div id="{{ $pet->id }}night"></div>
                     </div>
                 </div>
