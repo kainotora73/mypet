@@ -7,7 +7,8 @@
 レスポンシブ対応しているのでスマホからもご確認いただけます。
 
 
-<img width="400" alt="スクリーンショット 2021-07-06 4 55 19" src="https://user-images.githubusercontent.com/82766733/124514033-143ba780-de17-11eb-9640-806cf329cb9e.png">
+<img width="800" alt="スクリーンショット 2021-07-06 4 55 31" src="https://user-images.githubusercontent.com/82766733/124544464-1bd46e00-de62-11eb-9b72-c647ec565741.png">
+
 
 
 
