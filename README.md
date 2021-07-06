@@ -1,11 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
 ## MyPET
 
@@ -14,7 +7,8 @@
 レスポンシブ対応しているのでスマホからもご確認いただけます。
 
 
-画像
+<img width="400" alt="スクリーンショット 2021-07-06 4 55 19" src="https://user-images.githubusercontent.com/82766733/124514033-143ba780-de17-11eb-9640-806cf329cb9e.png">
+
 
 
 
@@ -24,7 +18,8 @@
 - [css]
 - - [bootstrap 4.6.0]
 - [Laravel 8.47.0]
-パッケージ
+- - [Laravel MIX]
+- - [Laravel UI]
 - [PHP 7.3.24]
 - [MySQL 8.0]
 - [jquery 3.6.0]

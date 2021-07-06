@@ -1,0 +1,9 @@
+runtime: php73
+
+env_variables:
+  APP_KEY: Ybase64:LL+TGRecURkoaaw4mbPpO7jJ5qahm2uNvETwStOHhIs=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: cookie
+
+
