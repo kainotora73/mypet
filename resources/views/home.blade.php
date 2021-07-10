@@ -11,26 +11,26 @@
         @endforeach
     </ul>
 
-    <div class="card mt-4 mx-auto tab-content" id="myTabs">
+    <div class="card mt-4 mx-auto tab-content w-auto" id="myTabs">
         {{-- card mypage --}}
         <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
-            <div class="card mt-4 mx-auto" style="width:30rem;">
+            <div class="card mt-4 mx-auto w-auto text-center">
 
                 <div class="card-body">
                     @if (Auth::id() == 1)
-                    <button class="mt-3 btn btn-outline-info block col-12" disabled>{{ __('ペット登録') }}</button>
+                    <button class="mt-3 btn btn-outline-info block col-sm-4" disabled>{{ __('ペット登録') }}</button>
                     @else
-                    <a class="mt-3 btn btn-outline-info block col-12" href="/puls">{{ __('ペット登録') }}</a>
+                    <a class="mt-3 btn btn-outline-info block col-sm-4" href="/puls">{{ __('ペット登録') }}</a>
                     @endif
 
 
                     <div class="dropdown dropright">
                         @if (Auth::id() == 1)
                         <button type="button" id="dropdown1"
-                        class="mt-3 btn btn-outline-info dropdown-toggle block col-12" disabled>{{ __('ペット情報削除')}}</button>
+                        class="mt-3 btn btn-outline-info dropdown-toggle block col-sm-4" disabled>{{ __('ペット情報削除')}}</button>
                         @else
                         <button type="button" id="dropdown1"
-                        class="mt-3 btn btn-outline-info dropdown-toggle block col-12"
+                        class="mt-3 btn btn-outline-info dropdown-toggle block col-sm-4"
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">{{ __('ペット情報削除')}}</button>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-3 btn btn-outline-info block col-12" onclick="event.preventDefault();
+                    <div class="mt-3 btn btn-outline-info block col-sm-4 mb-3" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             {{ __('ログアウト') }}
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="card mt-4 mx-auto" style="width:30rem;">
+    <div class="card mt-4 mx-auto  w-75">
         <div class="card-header">{{__('ペット登録') }}</div>
         <div class="card-body">
             <form method="post" action="{{ route('store') }}">
@@ -27,7 +27,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="text-center">
                     <button class="mt-5 btn btn-outline-info">{{ __('追加') }}</button>
                 </div>

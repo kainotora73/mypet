@@ -1,6 +1,6 @@
 <x-app-layout>
 
-        <div class="card mt-4 mx-auto" style="width:30rem;">
+        <div class="card mt-4 mx-auto w-75">
             <div class="card-header">{{__('パスワードリセット') }}</div>
             <div class="card-body">
                 <x-auth-validation-errors class="mb-4 alert alert-danger text-center" :errors="$errors" />

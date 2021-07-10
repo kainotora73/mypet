@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="card mt-4 mx-auto" style="width:30rem;">
+        <div class="card mt-4 mx-auto w-75" >
             <div class="card-header">{{__('新規登録') }}</div>
             <div class="card-body">
                <x-auth-validation-errors class="mb-4 alert alert-danger text-center" :errors="$errors" />
@@ -42,9 +42,11 @@
                         <a class="underline text-sm text-gray-600 hover:text-gray-900 ml-1" href="{{ route('login') }}">
                             {{ __('既に登録済の方') }}
                         </a>
-                        <button class="ml-5 btn btn-outline-info">
-                            {{ __('新規登録') }}
-                        </button>
+                        <div class="text-center">
+                            <button class="btn btn-outline-info">
+                                {{ __('新規登録') }}
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

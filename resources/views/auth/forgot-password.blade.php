@@ -4,7 +4,7 @@
             {{ __('パスワードをお忘れですか？メールアドレスをお知らせいただければ、新しいパスワードを選択できるパスワードリセットリンクをメールでお送りします。') }}
         </div>
 
-        <div class="card mt-4 mx-auto" style="width:30rem">
+        <div class="card mt-4 mx-auto w-75">
             <div class="card-header">{{__('パスワード再設定フォーム') }}</div>
             <div class="card-body">
 

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-        <div class="card mt-4 mx-auto" style="width:30rem;">
+        <div class="card mt-4 mx-auto  w-75">
             <div class="card-header">{{__('ログイン')}}</div>
             <div class="card-body">
                 <x-auth-session-status class="mb-4 alert alert-success text-center" :status="session('status')" />
@@ -38,10 +38,11 @@
                                 {{ __('パスワードを忘れた方') }}
                             </a>
                         @endif
-
-                        <button class="ml-3 btn btn-outline-info">
-                            {{ __('ログイン') }}
-                        </button>
+                        <div class="text-center">
+                            <button class=" btn btn-outline-info">
+                                {{ __('ログイン') }}
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
