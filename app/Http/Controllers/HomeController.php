@@ -31,12 +31,12 @@ class HomeController extends Controller
         $auths = Auth::id();
         $pets = Pet::where('user_id',$auths)->get();
 
-        // home/tab/foreach
-        $i = 1;
-        $n = 1;
+        // home/tab$&ard
+        $tubnumber = 1;
+        $cardnumber = 1;
 
         return view('home')
-            ->with(['pets' => $pets,'i' => $i,'n' => $n]);
+            ->with(['pets' => $pets,'tubnumber' => $tubnumber,'cardnumber' => $cardnumber]);
     }
     // 記録朝ごはん
     public function breakfast(Request $request){
@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     public function chart(Request $request){
         $id = $request->pet_id;
-        $breakfast = Breakfast::select(
+        $meal = Breakfast::select(
             DB::raw('breakfasts.date'),
             DB::raw('breakfasts.time as breakfast'),
             DB::raw('lunches.time as lunch'),
@@ -91,7 +91,7 @@ class HomeController extends Controller
             ->get();
 
         $json = [['日付','朝ごはん','昼ごはん','夜ごはん']];
-        foreach($breakfast as $key => $val){
+        foreach($meal as $key => $val){
             $json[++$key] = [(string)$val->date,
                 array_map('intval',explode(':',$val->breakfast)),
                 array_map('intval',explode(':',$val->lunch)),

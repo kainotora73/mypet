@@ -6,7 +6,7 @@
           </li>
         @foreach ($pets as $pet)
         <li class="nav-item">
-            <a class="nav-link pagetab" data-id="{{ $pet->id }}" id="item{{ ++$n }}-tab" data-toggle="tab" href="#item{{ $n }}" role="tab" aria-controls="item{{ $n }}" aria-selected="false">{{ $pet->name }}</a>
+            <a class="nav-link pagetab" data-id="{{ $pet->id }}" id="item{{ ++$tubnumber }}-tab" data-toggle="tab" href="#item{{ $tubnumber }}" role="tab" aria-controls="item{{ $tubnumber }}" aria-selected="false">{{ $pet->name }}</a>
         </li>
         @endforeach
     </ul>
@@ -58,7 +58,7 @@
         </div>
         {{-- card pet/foreach --}}
         @foreach ($pets as $pet)
-        <div class="tab-pane fade" id="item{{ ++$i }}" role="tabpanel" aria-labelledby="item{{ $i }}-tab">
+        <div class="tab-pane fade" id="item{{ ++$cardnumber }}" role="tabpanel" aria-labelledby="item{{ $cardnumber }}-tab">
             <div class="card-header">
                 <img src="/img/{{ $pet->body }}.png">
                 <h2 class="pt-2 display-5 d-inline-block"> {{ $pet->name }}</span>
