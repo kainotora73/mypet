@@ -24,9 +24,10 @@
 - [PHP 7.3.24]
 - [MySQL 8.0]
 - [jquery 3.6.0]
-- [GCP]
-  - [GAE]
-  - [Cloud SQL]
+- ~~[GCP]~~
+  - ~~[GAE]~~
+  - ~~[Cloud SQL]~~
+- [heroku]
 - [Docker/Docker-compose]
 - [Google chart API]
 
